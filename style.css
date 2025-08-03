@@ -14,6 +14,7 @@ body {
   background-blend-mode: darken;
   background-size: cover;
   background-position: center;
+  scroll-margin-top: var(--nav-height);
 }
 
 #contactBody {
@@ -22,6 +23,7 @@ body {
   background-blend-mode: darken;
   background-size: cover;
   background-position: center;
+  scroll-margin-top: var(--nav-height);
 }
 
 * {
