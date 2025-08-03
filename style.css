@@ -2,16 +2,15 @@
   --nav-height: 50px;
 }
 
-/* 1) Lock browser’s native scrolling on the root */
-html,
-body {
+/* 1) Lock root scrolling only on Home page */
+body#homeBody {
   height: 100%;
   margin: 0;
   padding: 0;
   overflow: hidden;
 }
 
-/* 2) Your scrollable “window” under the navbar */
+/* 2) Your scrollable “window” under the navbar (still applies on both pages) */
 #scroll-container {
   height: calc(100% - var(--nav-height));
   margin-top: var(--nav-height);
