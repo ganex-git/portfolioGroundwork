@@ -1,126 +1,128 @@
 :root {
   --nav-height: 50px;
+  --content-gap: 3rem;  /* tweak this to increase/decrease ALL spacings */
 }
 
-/* 1) Lock browser’s native scrolling on the root */
-html,
-body {
+/*─── Lock the root so only #scroll-container scrolls ───*/
+html, body {
   height: 100%;
   margin: 0;
   padding: 0;
   overflow: hidden;
 }
 
-/* Global reset */
-* {
+/*─── Global reset ───*/
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   text-decoration: none;
 }
 
-/* Paragraph spacing */
-p {
-  margin: 2rem 0;    /* 2rem of space above & below every <p> */
+/*─── Navbar stays fixed at top ───*/
+#navbar {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: var(--nav-height);
+  background: black;
+  z-index: 1000;
+  font-family: Garamond, serif;
+  padding: 0 15px;
 }
 
-/* 2) Your scrollable “window” under the navbar */
+#navdiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+#navdiv a {
+  color: white;
+  font-size: 20px;
+}
+
+.navbarLinks {
+  display: inline-block;
+  list-style: none;
+  margin: 0 40px;
+  font-weight: bold;
+}
+
+/*─── The only scrolling container ───*/
 #scroll-container {
   height: calc(100% - var(--nav-height));
   margin-top: var(--nav-height);
   overflow-y: auto;
   overflow-x: hidden;
-  overscroll-behavior: none;
-  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: none;         /* no bounce/overshoot */
+  -webkit-overflow-scrolling: touch;   /* smooth iOS scroll */
 }
 
-/* 3) Navbar stays fixed at top */
-#navbar {
-  font-family: Garamond, serif;
-  padding-left: 15px;
-  padding-right: 15px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: var(--nav-height);
-  z-index: 1000;
-  background: black;
-}
-
-#navdiv {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
-#navdiv a {
-  font-size: 20px;
-  color: white;
-  text-decoration: none;
-}
-
-.navbarLinks {
-  list-style: none;
-  display: inline-block;
-  margin: 0 40px;
-  font-weight: bold;
-}
-
-/* Section wrappers – keep backgrounds, add offset for anchors */
+/*─── Section backgrounds ───*/
 #homeBody,
 #contactBody {
   scroll-margin-top: var(--nav-height);
+  margin: 0;                            /* reset any old top‐margin */
   background-color: rgba(0, 0, 0, 0.5);
   background-blend-mode: darken;
   background-size: cover;
   background-position: center;
-  margin: 0;       /* reset old margin-top */
 }
 
-#homeBody {
-  background-image: url(natureImage.jpg);
+#homeBody { background-image: url(natureImage.jpg); }
+#contactBody { background-image: url(natureImage2.jpg); }
+
+/*─── Content Block Base ───*/
+.content-block {
+  max-width: 800px;                     /* cap your text width */
+  margin-block: var(--content-gap);     /* vertical gap above & below */
+  margin-inline: auto;                  /* center horizontally */
+  padding-inline: 1.5rem;               /* gutter on small screens */
+  color: white;
 }
 
-#contactBody {
-  background-image: url(natureImage2.jpg);
-}
-
-/* Home content blocks */
+/*─── Headings & Paragraphs ───*/
 #nameElement {
   font-family: Garamond, serif;
   font-weight: 200;
-  color: white;
   text-align: center;
-  margin: 150px auto;
-  max-width: 800px;
-  padding: 0 25px;
+  margin-block: var(--content-gap);
 }
 
 #introduction,
 #extrainf1,
 #extrainf2,
 #extrainf3 {
-  font-family: courier, monospace;
+  font-family: Courier, monospace;
   font-weight: bold;
-  color: white;
-  max-width: 800px;
-  margin: 2rem auto;    /* was 1rem; now doubles the vertical gap */
-  padding: 0 25px;
 }
 
+/* apply the .content-block rules to all of the above */
+#nameElement,
+#introduction,
+#extrainf1,
+#extrainf2,
+#extrainf3 {
+  composes: content-block;
+}
+
+/*─── Final Line ───*/
 #finalLine {
-  font-family: courier, monospace;
+  font-family: Courier, monospace;
   font-weight: bold;
-  color: white;
   text-align: center;
-  margin: 125px auto 50px;
   max-width: 600px;
-  padding: 0 25px;
+  margin-block-start: calc(var(--content-gap) * 1.5);
+  margin-block-end: var(--content-gap);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
 }
 
-/* Fade-in / Fade-out animations */
+/*─── Fade Animations ───*/
 .fadeIn {
-  margin: 2rem 0;       /* was 1rem; more breathing room between each fadeIn element */
+  margin-block: var(--content-gap);
   transform: translateY(20px);
   opacity: 0;
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -134,24 +136,24 @@ p {
 .fadeIn--hidden {
   opacity: 0;
   transform: translateY(-20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-/* Contact content blocks */
+/*─── Contact Blocks ───*/
 #contactElement,
 #phoneNumber,
 #eMail {
   font-family: Garamond, serif;
   font-weight: 200;
-  color: white;
   text-align: center;
-  margin: 150px auto 100px;
   max-width: 600px;
-  padding: 0 25px;
+  margin-block: var(--content-gap);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+  color: white;
 }
 
 #phoneNumber,
 #eMail {
   font-size: 32px;
-  margin: 0 0 25px;
+  margin-block-end: 1.5rem;
 }
