@@ -1,5 +1,11 @@
 :root {
-  --nav-height: 60px;   /* replace 60px with your nav’s actual height */
+  --nav-height: 50px;
+}
+
+body {
+  margin: 0;                    /* remove default body margin */
+  padding-top: var(--nav-height);
+  box-sizing: border-box;       /* keep layouts predictable */
 }
 
 #homeBody {
@@ -8,8 +14,6 @@
   background-blend-mode: darken;
   background-size: cover;
   background-position: center;
-  padding-top: var(--nav-height);
-  margin: 0;
 }
 
 #contactBody {
@@ -18,8 +22,6 @@
   background-blend-mode: darken;
   background-size: cover;
   background-position: center;
-  padding-top: var(--nav-height);
-  margin: 0;
 }
 
 * {
@@ -35,6 +37,7 @@
   left: 0;
   width: 100%;
   height: 50px;
+  z-index: 1000;
   background: black;
 }
 
