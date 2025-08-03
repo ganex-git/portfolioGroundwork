@@ -84,28 +84,32 @@ body {
   font-family: courier, monospace;
   font-weight: bold;
   color: white;
-  margin: 0 700px 0 25px;
+  width: calc(100% - 50px); /* full width minus some padding */
+  margin: 0 25px;
 }
 
 #extrainf1 {
   font-family: courier, monospace;
   font-weight: bold;
   color: white;
-  margin: 75px 25px 0 700px;
+  width: calc(100% - 50px); /* full width minus some padding */
+  margin: 0 25px;
 }
 
 #extrainf2 {
   font-family: courier, monospace;
   font-weight: bold;
   color: white;
-  margin: 75px 700px 0 25px;
+  width: calc(100% - 50px); /* full width minus some padding */
+  margin: 0 25px;
 }
 
 #extrainf3 {
   font-family: courier, monospace;
   font-weight: bold;
   color: white;
-  margin: 75px 25px 0 700px;
+  width: calc(100% - 50px); /* full width minus some padding */
+  margin: 0 25px;
 }
 
 #finalLine {
