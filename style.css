@@ -11,6 +11,13 @@ body {
   overflow: hidden;
 }
 
+/* Global reset */
+* {
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+/* Paragraph spacing */
 p {
   margin: 2rem 0;    /* 2rem of space above & below every <p> */
 }
@@ -57,12 +64,6 @@ p {
   display: inline-block;
   margin: 0 40px;
   font-weight: bold;
-}
-
-/* Global reset */
-* {
-  box-sizing: border-box;
-  text-decoration: none;
 }
 
 /* Section wrappers – keep backgrounds, add offset for anchors */
