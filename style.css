@@ -3,48 +3,28 @@
 }
 
 body {
-  margin: 0;                    /* remove default body margin */
+  margin: 0;
   padding-top: var(--nav-height);
-  box-sizing: border-box;       /* keep layouts predictable */
+  box-sizing: border-box;
 }
 
-#homeBody {
-  background-image: url(natureImage.jpg);
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
-  background-blend-mode: darken;
-  background-size: cover;
-  background-position: center;
-  scroll-margin-top: var(--nav-height);
-}
-
-#contactBody {
-  background-image: url(natureImage2.jpg);
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
-  background-blend-mode: darken;
-  background-size: cover;
-  background-position: center;
-  scroll-margin-top: var(--nav-height);
-}
-
-* {
-  text-decoration: none;
-}
-
+/* Navbar */
 #navbar {
   font-family: Garamond, serif;
   padding-left: 15px;
   padding-right: 15px;
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   height: var(--nav-height);
-  z-index: 1000;     /* anything below this is pushed beneath */
+  z-index: 1000;
   background: black;
 }
 
 #navdiv {
   display: flex;
-  justify-content: center;  /* fixes centering */
+  justify-content: center;
   align-items: center;
   height: 100%;
 }
@@ -62,40 +42,65 @@ body {
   font-weight: bold;
 }
 
+/* Global reset */
+* {
+  text-decoration: none;
+}
+
+/* Section wrappers – keep backgrounds, add offset */
+#homeBody,
+#contactBody {
+  margin-top: var(--nav-height);        /* push entire section below navbar */
+  scroll-margin-top: var(--nav-height); /* offset anchor jumps */
+  background-color: rgba(0, 0, 0, 0.5);
+  background-blend-mode: darken;
+  background-size: cover;
+  background-position: center;
+}
+
+#homeBody {
+  background-image: url(natureImage.jpg);
+}
+
+#contactBody {
+  background-image: url(natureImage2.jpg);
+}
+
+/* Home content */
 #nameElement {
   font-family: Garamond, serif;
   font-weight: 200;
   color: white;
   text-align: center;
-  margin: 150px 0px 150px 0px
+  margin: 150px 0 150px 0;
 }
 
 #introduction {
   font-family: courier, monospace;
   font-weight: bold;
   color: white;
-  margin: 0px 700px 0px 25px
+  margin: 0 700px 0 25px;
 }
 
 #extrainf1 {
   font-family: courier, monospace;
   font-weight: bold;
   color: white;
-  margin: 75px 25px 0px 700px
+  margin: 75px 25px 0 700px;
 }
 
 #extrainf2 {
   font-family: courier, monospace;
   font-weight: bold;
   color: white;
-  margin: 75px 700px 0px 25px
+  margin: 75px 700px 0 25px;
 }
 
 #extrainf3 {
   font-family: courier, monospace;
   font-weight: bold;
   color: white;
-  margin: 75px 25px 0px 700px
+  margin: 75px 25px 0 700px;
 }
 
 #finalLine {
@@ -103,11 +108,11 @@ body {
   font-weight: bold;
   color: white;
   text-align: center;
-  margin: 125px 250px 50px 250px
+  margin: 125px 250px 50px 250px;
 }
 
+/* Fade-in animation */
 .fadeIn {
-  padding-top: 50px;
   margin: 1rem 0;
   transform: translateY(20px);
   opacity: 0;
@@ -115,17 +120,17 @@ body {
 }
 
 .fadeIn--visible {
-opacity: 1;  
-transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
-
+/* Contact content */
 #contactElement {
   font-family: Garamond, serif;
   font-weight: 200;
   color: white;
   text-align: center;
-  margin: 150px 0px 100px 0px
+  margin: 150px 0 100px 0;
 }
 
 #phoneNumber {
@@ -134,7 +139,7 @@ transform: translateY(0);
   font-weight: 200;
   color: white;
   text-align: center;
-  margin: 0px 0px 0px 0px;
+  margin: 0;
 }
 
 #eMail {
@@ -143,5 +148,5 @@ transform: translateY(0);
   font-weight: 200;
   color: white;
   text-align: center;
-  margin: 25px 0px 0px 0px;
+  margin: 25px 0 0 0;
 }
