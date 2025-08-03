@@ -2,18 +2,26 @@
   --nav-height: 50px;
 }
 
+/* 1) Lock browser’s native scrolling on the root */
 html,
 body {
-  overflow-x: hidden;
-}
-
-body {
+  height: 100%;
   margin: 0;
-  padding-top: var(--nav-height);
-  box-sizing: border-box;
+  padding: 0;
+  overflow: hidden;
 }
 
-/* Navbar */
+/* 2) Your scrollable “window” under the navbar */
+#scroll-container {
+  height: calc(100% - var(--nav-height));
+  margin-top: var(--nav-height);
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 3) Navbar stays fixed at top */
 #navbar {
   font-family: Garamond, serif;
   padding-left: 15px;
@@ -49,18 +57,19 @@ body {
 
 /* Global reset */
 * {
+  box-sizing: border-box;
   text-decoration: none;
 }
 
-/* Section wrappers – keep backgrounds, add offset */
+/* Section wrappers – keep backgrounds, add offset for anchors */
 #homeBody,
 #contactBody {
-  margin-top: var(--nav-height);        /* push entire section below navbar */
-  scroll-margin-top: var(--nav-height); /* offset anchor jumps */
+  scroll-margin-top: var(--nav-height);
   background-color: rgba(0, 0, 0, 0.5);
   background-blend-mode: darken;
   background-size: cover;
   background-position: center;
+  margin: 0;       /* reset old margin-top */
 }
 
 #homeBody {
@@ -71,45 +80,27 @@ body {
   background-image: url(natureImage2.jpg);
 }
 
-/* Home content */
+/* Home content blocks */
 #nameElement {
   font-family: Garamond, serif;
   font-weight: 200;
   color: white;
   text-align: center;
-  margin: 150px 0 150px 0;
+  margin: 150px auto;
+  max-width: 800px;
+  padding: 0 25px;
 }
 
-#introduction {
-  font-family: courier, monospace;
-  font-weight: bold;
-  color: white;
-  width: calc(100% - 50px); /* full width minus some padding */
-  margin: 0 25px;
-}
-
-#extrainf1 {
-  font-family: courier, monospace;
-  font-weight: bold;
-  color: white;
-  width: calc(100% - 50px); /* full width minus some padding */
-  margin: 0 25px;
-}
-
-#extrainf2 {
-  font-family: courier, monospace;
-  font-weight: bold;
-  color: white;
-  width: calc(100% - 50px); /* full width minus some padding */
-  margin: 0 25px;
-}
-
+#introduction,
+#extrainf1,
+#extrainf2,
 #extrainf3 {
   font-family: courier, monospace;
   font-weight: bold;
   color: white;
-  width: calc(100% - 50px); /* full width minus some padding */
-  margin: 0 25px;
+  max-width: 800px;
+  margin: 1rem auto;
+  padding: 0 25px;
 }
 
 #finalLine {
@@ -117,10 +108,12 @@ body {
   font-weight: bold;
   color: white;
   text-align: center;
-  margin: 125px 250px 50px 250px;
+  margin: 125px auto 50px;
+  max-width: 600px;
+  padding: 0 25px;
 }
 
-/* Fade-in animation */
+/* Fade-in / Fade-out animations */
 .fadeIn {
   margin: 1rem 0;
   transform: translateY(20px);
@@ -133,36 +126,27 @@ body {
   transform: translateY(0);
 }
 
-/* NEW: Fade-out (scroll-past) animation */
 .fadeIn--hidden {
   opacity: 0;
   transform: translateY(-20px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-/* Contact content */
-#contactElement {
-  font-family: Garamond, serif;
-  font-weight: 200;
-  color: white;
-  text-align: center;
-  margin: 150px 0 100px 0;
-}
-
-#phoneNumber {
-  font-family: Garamond, serif;
-  font-size: 32px;
-  font-weight: 200;
-  color: white;
-  text-align: center;
-  margin: 0;
-}
-
+/* Contact content blocks */
+#contactElement,
+#phoneNumber,
 #eMail {
   font-family: Garamond, serif;
-  font-size: 32px;
   font-weight: 200;
   color: white;
   text-align: center;
-  margin: 25px 0 0 0;
+  margin: 150px auto 100px;
+  max-width: 600px;
+  padding: 0 25px;
+}
+
+#phoneNumber,
+#eMail {
+  font-size: 32px;
+  margin: 0 0 25px;
 }
