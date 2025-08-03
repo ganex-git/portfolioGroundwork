@@ -2,6 +2,11 @@
   --nav-height: 50px;
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 body {
   margin: 0;
   padding-top: var(--nav-height);
