@@ -1,10 +1,15 @@
+:root {
+  --nav-height: 60px;   /* replace 60px with your nav’s actual height */
+}
+
 #homeBody {
   background-image: url(natureImage.jpg);
   background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
   background-blend-mode: darken;
   background-size: cover;
   background-position: center;
-  padding-top: 50px;
+  padding-top: var(--nav-height);
+  margin: 0;
 }
 
 #contactBody {
@@ -13,7 +18,8 @@
   background-blend-mode: darken;
   background-size: cover;
   background-position: center;
-  padding-top: 50px;
+  padding-top: var(--nav-height);
+  margin: 0;
 }
 
 * {
