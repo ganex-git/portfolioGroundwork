@@ -1,9 +1,8 @@
 :root {
   --nav-height: 50px;
-  --content-gap: 3rem;  /* tweak this to increase/decrease ALL spacings */
 }
 
-/*─── Lock the root so only #scroll-container scrolls ───*/
+/* 1) Lock root scrolling */
 html, body {
   height: 100%;
   margin: 0;
@@ -11,18 +10,27 @@ html, body {
   overflow: hidden;
 }
 
-/*─── Global reset ───*/
-*,
-*::before,
-*::after {
+/* 2) Global reset */
+* {
   box-sizing: border-box;
   text-decoration: none;
 }
 
-/*─── Navbar stays fixed at top ───*/
+/* 3) Scrollable container */
+#scroll-container {
+  height: calc(100% - var(--nav-height));
+  margin-top: var(--nav-height);
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 4) Fixed Navbar */
 #navbar {
   position: fixed;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: var(--nav-height);
   background: black;
@@ -30,130 +38,56 @@ html, body {
   font-family: Garamond, serif;
   padding: 0 15px;
 }
+#navdiv { display: flex; align-items: center; justify-content: center; height: 100%; }
+#navdiv a { color: white; font-size: 20px; }
+.navbarLinks { display: inline-block; list-style: none; margin: 0 40px; font-weight: bold; }
 
-#navdiv {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
-
-#navdiv a {
-  color: white;
-  font-size: 20px;
-}
-
-.navbarLinks {
-  display: inline-block;
-  list-style: none;
-  margin: 0 40px;
-  font-weight: bold;
-}
-
-/*─── The only scrolling container ───*/
-#scroll-container {
-  height: calc(100% - var(--nav-height));
-  margin-top: var(--nav-height);
-  overflow-y: auto;
-  overflow-x: hidden;
-  overscroll-behavior-y: none;         /* no bounce/overshoot */
-  -webkit-overflow-scrolling: touch;   /* smooth iOS scroll */
-}
-
-/*─── Section backgrounds ───*/
-#homeBody,
-#contactBody {
-  scroll-margin-top: var(--nav-height);
-  margin: 0;                            /* reset any old top‐margin */
+/* 5) Restore your original background-on-body */
+body#homeBody,
+body#contactBody {
   background-color: rgba(0, 0, 0, 0.5);
   background-blend-mode: darken;
   background-size: cover;
   background-position: center;
 }
+body#homeBody { background-image: url(natureImage.jpg); }
+body#contactBody { background-image: url(natureImage2.jpg); }
 
-#homeBody { background-image: url(natureImage.jpg); }
-#contactBody { background-image: url(natureImage2.jpg); }
-
-/*─── Content Block Base ───*/
-.content-block {
-  max-width: 800px;                     /* cap your text width */
-  margin-block: var(--content-gap);     /* vertical gap above & below */
-  margin-inline: auto;                  /* center horizontally */
-  padding-inline: 1.5rem;               /* gutter on small screens */
+/* 6) Content styling */
+h1, p {
   color: white;
+  padding: 0 25px;
 }
-
-/*─── Headings & Paragraphs ───*/
 #nameElement {
   font-family: Garamond, serif;
   font-weight: 200;
   text-align: center;
-  margin-block: var(--content-gap);
+  margin: 150px auto;
+  max-width: 800px;
 }
-
 #introduction,
 #extrainf1,
 #extrainf2,
 #extrainf3 {
-  font-family: Courier, monospace;
+  font-family: courier, monospace;
   font-weight: bold;
+  max-width: 800px;
+  margin: 2rem auto;    /* bigger gaps */
 }
-
-/* apply the .content-block rules to all of the above */
-#nameElement,
-#introduction,
-#extrainf1,
-#extrainf2,
-#extrainf3 {
-  composes: content-block;
-}
-
-/*─── Final Line ───*/
 #finalLine {
-  font-family: Courier, monospace;
+  font-family: courier, monospace;
   font-weight: bold;
   text-align: center;
   max-width: 600px;
-  margin-block-start: calc(var(--content-gap) * 1.5);
-  margin-block-end: var(--content-gap);
-  margin-inline: auto;
-  padding-inline: 1.5rem;
+  margin: 125px auto 50px;
 }
 
-/*─── Fade Animations ───*/
+/* 7) Fade-in/out */
 .fadeIn {
-  margin-block: var(--content-gap);
+  margin: 2rem 0;
   transform: translateY(20px);
   opacity: 0;
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
-
-.fadeIn--visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.fadeIn--hidden {
-  opacity: 0;
-  transform: translateY(-20px);
-}
-
-/*─── Contact Blocks ───*/
-#contactElement,
-#phoneNumber,
-#eMail {
-  font-family: Garamond, serif;
-  font-weight: 200;
-  text-align: center;
-  max-width: 600px;
-  margin-block: var(--content-gap);
-  margin-inline: auto;
-  padding-inline: 1.5rem;
-  color: white;
-}
-
-#phoneNumber,
-#eMail {
-  font-size: 32px;
-  margin-block-end: 1.5rem;
-}
+.fadeIn--visible { opacity: 1; transform: translateY(0); }
+.fadeIn--hidden  { opacity: 0; transform: translateY(-20px); }
