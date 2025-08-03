@@ -11,6 +11,10 @@ body {
   overflow: hidden;
 }
 
+p {
+  margin: 2rem 0;    /* 2rem of space above & below every <p> */
+}
+
 /* 2) Your scrollable “window” under the navbar */
 #scroll-container {
   height: calc(100% - var(--nav-height));
@@ -59,10 +63,6 @@ body {
 * {
   box-sizing: border-box;
   text-decoration: none;
-}
-
-p {
-  margin: 2rem 0;    /* 2rem of space above & below every <p> */
 }
 
 /* Section wrappers – keep backgrounds, add offset for anchors */
